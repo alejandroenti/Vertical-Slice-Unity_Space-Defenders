@@ -715,7 +715,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemiesToSpawn:
-  - {fileID: 919132149155446097, guid: 54093649a81dfb847bd0a97ab2e024a6, type: 3}
+  - {fileID: 176234065282191816, guid: 19f646c35ca7be1468499921e435fa0a, type: 3}
   spawnPosition: {fileID: 1857193730}
   roundEnemies: 10
 --- !u!1 &1172810782
@@ -994,7 +994,7 @@ GameObject:
   - component: {fileID: 1900346955}
   m_Layer: 0
   m_Name: End Position
-  m_TagString: Untagged
+  m_TagString: Finish
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
