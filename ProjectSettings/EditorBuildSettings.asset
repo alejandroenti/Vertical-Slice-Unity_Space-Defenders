@@ -4,6 +4,9 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/DevScenes/DeckSelection.unity
+    guid: 71ad93b9c78dd3c409018d41b43e5c3b
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 867f94a22bdbcf74dbb31d198b0c017d, type: 2}

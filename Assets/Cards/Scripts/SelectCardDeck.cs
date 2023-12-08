@@ -3,18 +3,13 @@ using UnityEngine.EventSystems;
 
 public class SelectCardDeck : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
-
-    private void Start()
-    {
-        Debug.Log("STARTING!");
-    }
     public void OnPointerEnter(PointerEventData eventData)
     {
-        Debug.Log("MOUSE ENTERED!");
+        UI_Manager._UI_MANAGER.ShowCardInfoUI();
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
-        Debug.Log("MOUSE EXITED!");
+        UI_Manager._UI_MANAGER.HideCardInfoUI();
     }
 }
