@@ -22,7 +22,7 @@ public class Grid_Manager : MonoBehaviour
     private float positionX;
     private float positionZ;
 
-    private float yValue = 0.425f;
+    private float yValue = 0.32f;
     private float offset = 0.5f;
 
     private void Awake()
@@ -59,13 +59,21 @@ public class Grid_Manager : MonoBehaviour
                 tempTile.transform.SetParent(gridContainer.transform);
                 tempTile.name = "Tile_" + counter.ToString("000");
                 tempTile.transform.name = "Tile_" + counter.ToString("000");
-                
+
                 tempTile.GetComponent<MeshRenderer>().material = ((i % 2 == 0 && j % 2 != 0) || (i % 2 != 0 && j % 2 == 0)) ? lightMaterial : darkMaterial;
                     
                counter++;
             }
 
             positionX = startX + 1f;
+        }
+    }
+
+    public void DestroyGrid()
+    {
+        for (int i = gridContainer.transform.childCount - 1; i >= 0; i--)
+        {
+            Destroy(gridContainer.transform.GetChild(i).gameObject);
         }
     }
 }

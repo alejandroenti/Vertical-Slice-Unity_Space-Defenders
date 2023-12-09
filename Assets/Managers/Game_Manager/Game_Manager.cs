@@ -8,6 +8,8 @@ public class Game_Manager : MonoBehaviour
 
     [SerializeField] private List<Card> cardDeck;
 
+    private Card currentCardSelected;
+
     private void Awake()
     {
         if (_Game_Manager != null && _Game_Manager != this)
@@ -28,9 +30,18 @@ public class Game_Manager : MonoBehaviour
         cardDeck = newCardList;
     }
 
+    public void SetCurrentCard(Card newCard) => currentCardSelected = newCard;
+
+    public Card GetCard() => currentCardSelected;
+
     public void SetModelInCursor(GameObject card)
     {
         Texture2D cardTexture = card.transform.GetChild(0).GetChild(1).GetComponent<Image>().sprite.texture;
         Cursor.SetCursor(cardTexture, Vector2.zero, CursorMode.Auto);
+    }
+
+    public void ResetCursor()
+    {
+        Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
     }
 }
