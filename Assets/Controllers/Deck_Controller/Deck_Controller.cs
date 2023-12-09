@@ -49,12 +49,19 @@ public class Deck_Controller : MonoBehaviour
     {
         if (deck.Contains(newCard))
         {
-            deck.Remove(newCard);
+            deck.RemoveAt(deck.IndexOf(newCard));
         }
 
         if (cardDictionary.ContainsKey(newCard))
         {
-            cardDictionary.Remove(newCard);
+            if (cardDictionary[newCard] <= 1)
+            {
+                cardDictionary.Remove(newCard);
+            }
+            else
+            {
+                cardDictionary[newCard]--;
+            }
         }
 
         UpdateDeckList();
@@ -80,6 +87,9 @@ public class Deck_Controller : MonoBehaviour
             tempCard.transform.SetParent(deckContainer.transform);
             tempCard.name = card.name;
             tempCard.transform.name = card.name;
+
+            // Pasamos la carta al botón de Quitar del deck
+            tempCard.transform.GetChild(4).GetComponent<DeleteFromDeck>().SetCardToDelete(card);
 
             // Cambiamos los campos necesarios
             tempCard.transform.GetChild(1).GetComponent<Image>().sprite = card.GetCardArtwork();
