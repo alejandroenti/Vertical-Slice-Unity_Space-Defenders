@@ -5,6 +5,7 @@ public class SelectCardDeck : MonoBehaviour, IPointerEnterHandler, IPointerExitH
 {
     private Card currentCard;
 
+    public Card GetCurrentCard() => currentCard;
     public void SetCurrentCard(Card newCard) => currentCard = newCard;
 
     public void OnPointerEnter(PointerEventData eventData)

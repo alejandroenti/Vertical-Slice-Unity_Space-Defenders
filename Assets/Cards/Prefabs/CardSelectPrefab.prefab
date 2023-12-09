@@ -176,6 +176,7 @@ GameObject:
   - component: {fileID: 61351496538896566}
   - component: {fileID: 489194371426988460}
   - component: {fileID: 1173924935232659867}
+  - component: {fileID: 1339933310913231175}
   m_Layer: 5
   m_Name: AddToDeckButton
   m_TagString: Untagged
@@ -286,6 +287,18 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &1339933310913231175
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6692656675255585387}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1410c02879195744d94515adda992bfa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &8513335359309806582
 PrefabInstance:
   m_ObjectHideFlags: 0
