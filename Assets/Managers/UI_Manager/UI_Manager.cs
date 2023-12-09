@@ -7,6 +7,8 @@ public class UI_Manager : MonoBehaviour
     private Card cardSelected;
     [SerializeField] private GameObject cardInfoUI;
 
+    private MountDescriptionCard mountDescriptionCardScript;
+
     private void Awake()
     {
         if (_UI_MANAGER != null && _UI_MANAGER != this)
@@ -16,16 +18,22 @@ public class UI_Manager : MonoBehaviour
         else
         {
             _UI_MANAGER = this;
+
+            mountDescriptionCardScript = cardInfoUI.GetComponent<MountDescriptionCard>();
         }
     }
+
+    public void SetCardSelected(Card newCard) => cardSelected = newCard;
 
     public void ShowCardInfoUI()
     {
         cardInfoUI.SetActive(true);
+        mountDescriptionCardScript.MountCard(cardSelected);
     }
 
     public void HideCardInfoUI()
     {
         cardInfoUI.SetActive(false);
+        cardSelected = null;
     }
 }

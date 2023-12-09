@@ -781,6 +781,7 @@ GameObject:
   - component: {fileID: 523507920}
   - component: {fileID: 523507922}
   - component: {fileID: 523507921}
+  - component: {fileID: 523507923}
   m_Layer: 5
   m_Name: CardContent
   m_TagString: Untagged
@@ -846,6 +847,22 @@ MonoBehaviour:
   m_Spacing: {x: 16, y: 16}
   m_Constraint: 1
   m_ConstraintCount: 4
+--- !u!114 &523507923
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 523507919}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 488ca42d72c804b4697b9ecf9b7ff910, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cards:
+  - {fileID: 11400000, guid: 1cac6a2d522ba8946b5cb08618a6cbea, type: 2}
+  - {fileID: 11400000, guid: 90d5b8662f8062d40a9b9ba0a58730cc, type: 2}
+  cardPrefab: {fileID: 397183165883043698, guid: 09dbeb38bf4edd04285a3c121dda0df6, type: 3}
 --- !u!1 &650156252
 GameObject:
   m_ObjectHideFlags: 0
