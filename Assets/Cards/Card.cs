@@ -11,9 +11,12 @@ public class Card : ScriptableObject
     [SerializeField] private int cardCost;
     [SerializeField] private int cardEffectAmount;
 
+    [SerializeField] private GameObject cardModel;
+
     public string GetCardName() => cardName;
     public string GetCardDescription() => cardDescription;
     public Sprite GetCardArtwork() => cardArtwork;
     public int GetCardCost() => cardCost;
     public int GetCardEffectAmount() => cardEffectAmount;
+    public GameObject GetCardModel() => cardModel;
 }

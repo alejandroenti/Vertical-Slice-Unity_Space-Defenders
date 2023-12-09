@@ -1,4 +1,3 @@
-using System.Collections;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -57,9 +56,9 @@ public class SelectHandler : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        Debug.Log("Clicked");
         this.transform.parent.gameObject.SetActive(false);
         Grid_Manager._Grid_Manager.GenerateGrid();
+        Game_Manager._Game_Manager.SetModelInCursor(gameObject);
     }
 
     private void StartAnimation(bool isStartingAnimation)

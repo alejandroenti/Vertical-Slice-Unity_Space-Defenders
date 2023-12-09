@@ -17,3 +17,4 @@ MonoBehaviour:
   cardArtwork: {fileID: 21300000, guid: 46f55a740cd1a0b4baeb1240d9588321, type: 3}
   cardCost: 78
   cardEffectAmount: 12
+  cardModel: {fileID: 796809762739478286, guid: 0a082c7e30f629441a6619e341e94c04, type: 3}

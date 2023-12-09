@@ -1,11 +1,12 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Game_Manager : MonoBehaviour
 {
     public static Game_Manager _Game_Manager;
 
-    private List<Card> cardDeck;
+    [SerializeField] private List<Card> cardDeck;
 
     private void Awake()
     {
@@ -25,5 +26,11 @@ public class Game_Manager : MonoBehaviour
     {
         cardDeck.Clear();
         cardDeck = newCardList;
+    }
+
+    public void SetModelInCursor(GameObject card)
+    {
+        Texture2D cardTexture = card.transform.GetChild(0).GetChild(1).GetComponent<Image>().sprite.texture;
+        Cursor.SetCursor(cardTexture, Vector2.zero, CursorMode.Auto);
     }
 }
