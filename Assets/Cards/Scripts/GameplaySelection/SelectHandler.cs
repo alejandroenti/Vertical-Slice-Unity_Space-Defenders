@@ -2,7 +2,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class SelectHandler : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, ISelectHandler, IDeselectHandler
+public class SelectHandler : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, ISelectHandler, IDeselectHandler, IPointerClickHandler
 {
     [Header("Animation Settings")]
     [SerializeField] private float verticalAmount = 25f;
@@ -47,14 +47,19 @@ public class SelectHandler : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
 
     public void OnSelect(BaseEventData eventData)
     {
-        //StartCoroutine(MoveCard(true));
         StartAnimation(true);
     }
 
     public void OnDeselect(BaseEventData eventData)
     {
-        //StartCoroutine(MoveCard(false));
         StartAnimation(false);
+    }
+
+    public void OnPointerClick(PointerEventData eventData)
+    {
+        Debug.Log("Clicked");
+        this.transform.parent.gameObject.SetActive(false);
+        Grid_Manager._Grid_Manager.GenerateGrid();
     }
 
     private void StartAnimation(bool isStartingAnimation)
