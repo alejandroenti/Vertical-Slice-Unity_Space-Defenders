@@ -6,8 +6,9 @@ public class Game_Manager : MonoBehaviour
 {
     public static Game_Manager _Game_Manager;
 
-    private List<Card> cardDeck;
+    private string currentScene;
 
+    private List<Card> cardDeck;
     private Card currentCardSelected;
 
     private void Awake()
@@ -31,6 +32,7 @@ public class Game_Manager : MonoBehaviour
         cardDeck = newCardList;
     }
 
+    public void SetCurrentScene(string sceneName) => currentScene = sceneName;
     public void SetCurrentCard(Card newCard) => currentCardSelected = newCard;
 
     public Card GetCard() => currentCardSelected;

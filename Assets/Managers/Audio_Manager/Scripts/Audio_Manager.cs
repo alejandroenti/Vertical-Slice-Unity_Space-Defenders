@@ -17,6 +17,7 @@ public class Audio_Manager : MonoBehaviour
     {
         if (_AUDIO_MANAGER != null && _AUDIO_MANAGER != this)
         {
+            _AUDIO_MANAGER.OnLoadNewLevel();
             Destroy(gameObject);
         }
         else
@@ -55,9 +56,22 @@ public class Audio_Manager : MonoBehaviour
         audioMixer.SetFloat("uiVolume", volume);
     }
 
+    public void PlayMusicSound(AudioClip newClip)
+    {
+        musicAudioSource.clip = newClip;
+        musicAudioSource.Play();
+    }
+
     public void PlayUISound(AudioClip newClip)
     {
         uiAudioSource.clip = newClip;
         uiAudioSource.Play();
+    }
+
+    public void StopAllAudioSources()
+    {
+        musicAudioSource.Stop();
+        fxAudioSource.Stop();
+        uiAudioSource.Stop();
     }
 }
