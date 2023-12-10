@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class Buttons : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
+public class ButtonsEffect : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
 {
     [Header("Buttons Alternative Images")]
     [SerializeField] private Sprite hoverImage;
@@ -11,6 +11,11 @@ public class Buttons : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler,
 
     [Header("Button Hover Scale")]
     [SerializeField, Range(1f, 2f)] private float scaleAmount;
+
+    [Header("Buttons Sounds")]
+    [SerializeField] private AudioClip hoverSound;
+    [SerializeField] private AudioClip clickedSound;
+    [SerializeField] private AudioClip exitdSound;
 
     private Sprite mainImage;
 
@@ -43,6 +48,8 @@ public class Buttons : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler,
 
     public void OnPointerClick(PointerEventData eventData)
     {
+        Audio_Manager._AUDIO_MANAGER.PlayUISound(clickedSound);
+
         imageComponent.sprite = clickedImage;
 
         imageComponent.color = clickedColor;
@@ -51,6 +58,8 @@ public class Buttons : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler,
 
     public void OnPointerEnter(PointerEventData eventData)
     {
+        Audio_Manager._AUDIO_MANAGER.PlayUISound(hoverSound);
+
         imageComponent.sprite = hoverImage;
 
         imageComponent.transform.localScale = hoverScale;
@@ -62,6 +71,8 @@ public class Buttons : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler,
 
     public void OnPointerExit(PointerEventData eventData)
     {
+        Audio_Manager._AUDIO_MANAGER.PlayUISound(exitdSound);
+
         imageComponent.sprite = mainImage;
 
         imageComponent.transform.localScale = initialScale;
