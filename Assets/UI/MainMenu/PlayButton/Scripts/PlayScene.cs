@@ -5,6 +5,6 @@ public class PlayScene : MonoBehaviour, IPointerClickHandler
 {
     public void OnPointerClick(PointerEventData eventData)
     {
-        throw new System.NotImplementedException();
+        Scene_Manager._SCENE_MANAGER.LoadNextScene("002_Deck_Selection");
     }
 }

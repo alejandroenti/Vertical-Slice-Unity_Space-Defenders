@@ -339,6 +339,7 @@ GameObject:
   - component: {fileID: 1515119753900026151}
   - component: {fileID: 2559578121653374214}
   - component: {fileID: 1713906999253092050}
+  - component: {fileID: 2264669114506840390}
   - component: {fileID: 766692519404274238}
   m_Layer: 5
   m_Name: CardDeckRemoveIcon
@@ -405,6 +406,21 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &2264669114506840390
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8486401451446381778}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd1b782fe5a0b6845af94e430a28e41e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hoverSound: {fileID: 8300000, guid: cad11a4481c77fe4aabeb5563cb0bd6c, type: 3}
+  clickedSound: {fileID: 8300000, guid: b12c1e501b51c1340b16ba9a959678c5, type: 3}
+  exitdSound: {fileID: 8300000, guid: 7f284a9543ef80141a55ca2dc2800e6a, type: 3}
 --- !u!114 &766692519404274238
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -25,6 +25,9 @@ public class GenerateCards : MonoBehaviour
             // Instaciamos el prefab de la carta y nos la guardamos para poder realizarle los cambios de padre y nombre
             GameObject tempCard = Instantiate(cardPrefab, this.transform);
 
+            // Retiramos la animación de la carta: Sólo para GAMEPLAY
+            tempCard.transform.GetChild(0).GetChild(0).GetComponent<SelectHandler>().enabled = false;
+
             tempCard.transform.SetParent(this.transform);
             tempCard.name = "Card_" + i.ToString("000");
             tempCard.transform.name = "Card_" + i.ToString("000");

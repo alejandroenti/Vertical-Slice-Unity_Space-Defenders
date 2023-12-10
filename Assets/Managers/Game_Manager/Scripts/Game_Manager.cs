@@ -22,6 +22,7 @@ public class Game_Manager : MonoBehaviour
             _Game_Manager = this;
             DontDestroyOnLoad(this);
 
+            currentScene = "0001_Main_Menu";
             cardDeck = new List<Card>();
         }
     }

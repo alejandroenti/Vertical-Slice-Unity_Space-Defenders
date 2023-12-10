@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.Animations;
 using UnityEngine.Audio;
 
 public class Audio_Manager : MonoBehaviour
@@ -24,6 +23,8 @@ public class Audio_Manager : MonoBehaviour
         {
             _AUDIO_MANAGER = this;
             DontDestroyOnLoad(this);
+
+            _AUDIO_MANAGER.OnLoadNewLevel();
         }
     }
 

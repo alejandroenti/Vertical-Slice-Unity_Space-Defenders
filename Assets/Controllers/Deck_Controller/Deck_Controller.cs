@@ -22,11 +22,6 @@ public class Deck_Controller : MonoBehaviour
         deck = new List<Card>();
     }
 
-    private void Update()
-    {
-        Debug.Log(deck.Count);
-    }
-
     public List<Card> GetDeck() => deck;
 
     public void AddCardToDeck(Card newCard)

@@ -7,7 +7,7 @@ public class UI_Manager : MonoBehaviour
     private Card cardSelected;
 
     private GameObject settingsMenu;
-    [SerializeField] private GameObject cardInfoUI;
+    private GameObject cardInfoUI;
 
     private MountDescriptionCard mountDescriptionCardScript;
 
@@ -21,13 +21,16 @@ public class UI_Manager : MonoBehaviour
         {
             _UI_MANAGER = this;
             DontDestroyOnLoad(this);
-
-            //mountDescriptionCardScript = cardInfoUI.GetComponent<MountDescriptionCard>();
         }
     }
 
     public void SetSettingsMenu(GameObject newSettingsMenu) => settingsMenu = newSettingsMenu;
     public void SetCardSelected(Card newCard) => cardSelected = newCard;
+    public void SetCardInfo(GameObject newCardInfo)
+    {
+        cardInfoUI = newCardInfo;
+        mountDescriptionCardScript = cardInfoUI.GetComponent<MountDescriptionCard>();
+    }
 
     public void OpenSettingsMenu()
     {
@@ -36,7 +39,7 @@ public class UI_Manager : MonoBehaviour
 
     public void CloseSettingsMenu()
     {
-        settingsMenu?.SetActive(false);
+        settingsMenu.SetActive(false);
     }
 
     public void ShowCardInfoUI()

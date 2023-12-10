@@ -1,20 +1,24 @@
+using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
-public class SaveDeck : MonoBehaviour
+public class SaveDeck : MonoBehaviour, IPointerClickHandler
 {
-    Button saveDeckButton;
+    [Header("Image Sounds")]
+    [SerializeField] private AudioClip onSuccessClip;
+    [SerializeField] private AudioClip onFailClip;
 
-    private void Awake()
+    public void OnPointerClick(PointerEventData eventData)
     {
-        saveDeckButton = GetComponent<Button>();
-        saveDeckButton.onClick.AddListener(SaveDeckToManager);
-    }
+        List<Card> cards = Deck_Controller._Deck_Controller.GetDeck();
 
-    private void SaveDeckToManager()
-    {
-        Game_Manager._Game_Manager.SetCardDeck(Deck_Controller._Deck_Controller.GetDeck());
+        if (cards.Count >= 10)
+        {
+            Audio_Manager._AUDIO_MANAGER.PlayUISound(onSuccessClip);
+            Game_Manager._Game_Manager.SetCardDeck(Deck_Controller._Deck_Controller.GetDeck());
+            Scene_Manager._SCENE_MANAGER.LoadNextScene("999_Credits");
+        }
 
-        // Pasamos a la siguiente escena
+        Audio_Manager._AUDIO_MANAGER.PlayUISound(onFailClip);
     }
 }
