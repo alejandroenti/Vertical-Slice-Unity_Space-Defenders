@@ -8,6 +8,7 @@ public class UI_Manager : MonoBehaviour
 
     private GameObject settingsMenu;
     private GameObject cardInfoUI;
+    private GameObject pauseMenu;
 
     private MountDescriptionCard mountDescriptionCardScript;
 
@@ -32,6 +33,8 @@ public class UI_Manager : MonoBehaviour
         mountDescriptionCardScript = cardInfoUI.GetComponent<MountDescriptionCard>();
     }
 
+    public void SetPauseMenu(GameObject newPauseMenu) => pauseMenu = newPauseMenu;
+
     public void OpenSettingsMenu()
     {
         settingsMenu.SetActive(true);
@@ -40,6 +43,28 @@ public class UI_Manager : MonoBehaviour
     public void CloseSettingsMenu()
     {
         settingsMenu.SetActive(false);
+    }
+
+    public void ShowPauseMenu()
+    {
+        pauseMenu.SetActive(true);
+    }
+
+    public void OpenPauseMenu()
+    {
+        Game_Manager._Game_Manager.StopTime();
+        pauseMenu.SetActive(true);
+    }
+
+    public void HidePauseMenu()
+    {
+        pauseMenu.SetActive(false);
+    }
+
+    public void ClosePauseMenu()
+    {
+        pauseMenu.SetActive(false);
+        Game_Manager._Game_Manager.ResumeTime();
     }
 
     public void ShowCardInfoUI()

@@ -16,7 +16,7 @@ public class SaveDeck : MonoBehaviour, IPointerClickHandler
         {
             Audio_Manager._AUDIO_MANAGER.PlayUISound(onSuccessClip);
             Game_Manager._Game_Manager.SetCardDeck(Deck_Controller._Deck_Controller.GetDeck());
-            Scene_Manager._SCENE_MANAGER.LoadNextScene("999_Credits");
+            Scene_Manager._SCENE_MANAGER.LoadNextScene("003_Tutorial");
         }
 
         Audio_Manager._AUDIO_MANAGER.PlayUISound(onFailClip);

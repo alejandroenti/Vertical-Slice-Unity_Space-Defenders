@@ -44,6 +44,16 @@ public class Game_Manager : MonoBehaviour
         Cursor.SetCursor(cardTexture, Vector2.zero, CursorMode.Auto);
     }
 
+    public void StopTime()
+    {
+        Time.timeScale = 0;
+    }
+
+    public void ResumeTime()
+    {
+        Time.timeScale = 1;
+    }
+
     public void ResetCursor()
     {
         Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);

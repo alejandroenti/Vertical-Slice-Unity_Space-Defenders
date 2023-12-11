@@ -7,6 +7,7 @@ TagManager:
   - Floor
   - AudioSources
   - CardInfo
+  - PauseMenu
   layers:
   - Default
   - TransparentFX

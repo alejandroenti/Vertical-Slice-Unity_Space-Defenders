@@ -22,7 +22,7 @@ public class Grid_Manager : MonoBehaviour
     private float positionX;
     private float positionZ;
 
-    private float yValue = 0.28f;
+    private float yValue = 0.32f;
     private float offset = 0.5f;
 
     private void Awake()
@@ -35,8 +35,10 @@ public class Grid_Manager : MonoBehaviour
         {
             _Grid_Manager = this;
 
-            startX = (gridWidth / 2) - offset;
+            startX = (gridWidth / 2);
             startZ = -(gridHeight / 2) + offset;
+
+            gridHeight -= 1;
 
             positionX = startX + 1f;
             positionZ = startZ - 1f;
