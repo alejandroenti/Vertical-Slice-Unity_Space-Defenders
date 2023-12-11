@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class UI_Manager : MonoBehaviour
@@ -11,6 +12,7 @@ public class UI_Manager : MonoBehaviour
     private GameObject pauseMenu;
     private GameObject currency;
     private GameObject enemyCounterObject;
+    private GameObject roundsObject;
 
     private MountDescriptionCard mountDescriptionCardScript;
 
@@ -39,6 +41,7 @@ public class UI_Manager : MonoBehaviour
 
     public void SetPauseMenu(GameObject newPauseMenu) => pauseMenu = newPauseMenu;
     public void SetEnemyCounter(GameObject newEnemyCounter) => enemyCounterObject = newEnemyCounter;
+    public void SetRoundsObject(GameObject newRoundsObject) => roundsObject = newRoundsObject;
 
     public void OpenSettingsMenu()
     {
@@ -92,5 +95,15 @@ public class UI_Manager : MonoBehaviour
     public void UpdateEnemyCounter(int enemyCounter)
     {
         enemyCounterObject.GetComponent<UpdateEnemyCounter>().UpdateText(enemyCounter);
+    }
+
+    public void UpdateCurrentRound(int round)
+    {
+        roundsObject.GetComponent<UpdateRounds>().UpdateCurrentRound(round);
+    }
+
+    public void UpdateTotalRounds(int totalRounds)
+    {
+        roundsObject.GetComponent<UpdateRounds>().UpdateTotalRounds(totalRounds);
     }
 }
