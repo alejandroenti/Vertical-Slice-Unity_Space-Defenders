@@ -27,22 +27,15 @@ public class Grid_Manager : MonoBehaviour
 
     private void Awake()
     {
-        if (_Grid_Manager != null &&  _Grid_Manager != this) 
-        {
-            Destroy(gameObject);
-        }
-        else
-        {
-            _Grid_Manager = this;
+        _Grid_Manager = this;
 
-            startX = (gridWidth / 2);
-            startZ = -(gridHeight / 2) + offset;
+        startX = (gridWidth / 2);
+        startZ = -(gridHeight / 2) + offset;
 
-            gridHeight -= 1;
+        gridHeight -= 1;
 
-            positionX = startX + 1f;
-            positionZ = startZ - 1f;
-        } 
+        positionX = startX + 1f;
+        positionZ = startZ - 1f;
     }
 
     public void GenerateGrid()
@@ -69,6 +62,9 @@ public class Grid_Manager : MonoBehaviour
 
             positionX = startX + 1f;
         }
+
+        positionX = startX + 1f;
+        positionZ = startZ - 1f;
     }
 
     public void DestroyGrid()

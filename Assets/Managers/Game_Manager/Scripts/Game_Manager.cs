@@ -35,6 +35,8 @@ public class Game_Manager : MonoBehaviour
         cardDeck = newCardList;
     }
 
+    public List<Card> GetCardDeck() => cardDeck;
+
     public void SetCurrentScene(string sceneName) => currentScene = sceneName;
     public void SetCurrentCard(Card newCard) => currentCardSelected = newCard;
 

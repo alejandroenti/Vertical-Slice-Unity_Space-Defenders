@@ -13,6 +13,8 @@ public class UI_Manager : MonoBehaviour
     private GameObject currency;
     private GameObject enemyCounterObject;
     private GameObject roundsObject;
+    private GameObject deckContainerObject;
+    private GameObject currentStateObject;
 
     private MountDescriptionCard mountDescriptionCardScript;
 
@@ -42,6 +44,8 @@ public class UI_Manager : MonoBehaviour
     public void SetPauseMenu(GameObject newPauseMenu) => pauseMenu = newPauseMenu;
     public void SetEnemyCounter(GameObject newEnemyCounter) => enemyCounterObject = newEnemyCounter;
     public void SetRoundsObject(GameObject newRoundsObject) => roundsObject = newRoundsObject;
+    public void SetDeckContainerObject(GameObject newDeckContainerObject) => deckContainerObject = newDeckContainerObject;
+    public void SetCurrentStateObject(GameObject newCurrentStateObject) => currentStateObject = newCurrentStateObject;
 
     public void OpenSettingsMenu()
     {
@@ -105,5 +109,27 @@ public class UI_Manager : MonoBehaviour
     public void UpdateTotalRounds(int totalRounds)
     {
         roundsObject.GetComponent<UpdateRounds>().UpdateTotalRounds(totalRounds);
+    }
+
+    public void UpdateCurrentState(string state)
+    {
+        currentStateObject.GetComponent<UpdateCurrentState>().UpdateCurrentStateText(state);
+    }
+
+    public void SetNewCardToHand(Card newCard, int position)
+    {
+        deckContainerObject.GetComponent<PlaceCards>().PlaceCard(newCard, position);
+    }
+
+    public void ShowDeckContainer()
+    {
+        Debug.Log("SHOW");
+        deckContainerObject.SetActive(true);
+    }
+
+    public void HideDeckContainer()
+    {
+        Debug.Log("HIDE");
+        deckContainerObject.SetActive(false);
     }
 }

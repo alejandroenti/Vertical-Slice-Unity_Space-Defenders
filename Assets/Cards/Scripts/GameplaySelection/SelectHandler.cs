@@ -58,7 +58,7 @@ public class SelectHandler : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        this.transform.parent.gameObject.SetActive(false);
+        UI_Manager._UI_MANAGER.HideDeckContainer();
         Grid_Manager._Grid_Manager.GenerateGrid();
         Game_Manager._Game_Manager.SetCurrentCard(currentCard);
         Game_Manager._Game_Manager.SetModelInCursor(gameObject);
