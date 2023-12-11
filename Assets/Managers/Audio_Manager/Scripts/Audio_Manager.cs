@@ -24,22 +24,38 @@ public class Audio_Manager : MonoBehaviour
             _AUDIO_MANAGER = this;
             DontDestroyOnLoad(this);
 
-            _AUDIO_MANAGER.OnLoadNewLevel();
+            OnLoadNewLevel();
         }
     }
 
-    private void Start()
-    {
-        OnLoadNewLevel();
-    }
-
-    public void OnLoadNewLevel()
+    private void OnLoadNewLevel()
     {
         GameObject audioSourcesContainer = GameObject.FindGameObjectWithTag("AudioSources");
 
         musicAudioSource = audioSourcesContainer.transform.GetChild(0).GetComponent<AudioSource>();
         fxAudioSource = audioSourcesContainer.transform.GetChild(1).GetComponent<AudioSource>();
         uiAudioSource = audioSourcesContainer.transform.GetChild(2).GetComponent<AudioSource>();
+    }
+
+    public float GetVolumeMusic()
+    {
+        float volume = 0f;
+        audioMixer.GetFloat("musicVolume", out volume);
+        return volume;
+    }
+
+    public float GetVolumeFX()
+    {
+        float volume = 0f;
+        audioMixer.GetFloat("fxVolume", out volume);
+        return volume;
+    }
+
+    public float GetVolumeUI()
+    {
+        float volume = 0f;
+        audioMixer.GetFloat("uiVolume", out volume);
+        return volume;
     }
 
     public void SetVolumeMusic(float volume)

@@ -7,6 +7,7 @@ public class PauseMenu : MonoBehaviour
     [SerializeField] private GameObject settingsObject;
 
     private bool isPauseMenuShown = false;
+    private bool isSettingsShown = false;
 
     private void Awake()
     {
@@ -16,19 +17,20 @@ public class PauseMenu : MonoBehaviour
 
     private void Update()
     {
+        isSettingsShown = settingsObject.activeSelf;
+
         if (Input.GetButtonDown("Cancel"))
         {
-            Debug.Log("ESCAPE!");
 
-            isPauseMenuShown = !isPauseMenuShown;
-
-            if (isPauseMenuShown)
+            if (!isPauseMenuShown)
             {
                 UI_Manager._UI_MANAGER.OpenPauseMenu();
+                isPauseMenuShown = !isPauseMenuShown;
             }
-            else
+            else if (!isSettingsShown)
             {
                 UI_Manager._UI_MANAGER.ClosePauseMenu();
+                isPauseMenuShown = !isPauseMenuShown;
             }
         }
     }

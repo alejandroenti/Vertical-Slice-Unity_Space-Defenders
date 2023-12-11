@@ -8,7 +8,7 @@ public class CreditsToMainMenu : MonoBehaviour
     [Header("Credits Music Scene")]
     [SerializeField] private AudioClip sceneMusic;
 
-    private float animTimer = 0f;
+    public float animTimer = 0f;
 
     private void Start()
     {
