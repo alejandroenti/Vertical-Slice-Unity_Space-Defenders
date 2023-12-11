@@ -17,6 +17,11 @@ public class Spawn_Manager : MonoBehaviour
     private float spawnTimer = 0.0f;
     private float spawnTime = 0.75f;
 
+    private void Start()
+    {
+        UI_Manager._UI_MANAGER.UpdateEnemyCounter(roundEnemies);
+    }
+
     private void Update()
     {
         spawnTimer += Time.deltaTime;

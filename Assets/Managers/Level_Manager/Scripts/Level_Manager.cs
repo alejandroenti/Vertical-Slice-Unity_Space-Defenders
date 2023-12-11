@@ -24,7 +24,10 @@ public class Level_Manager : MonoBehaviour
         {
             UI_Manager._UI_MANAGER.SetCurrency(currencyTextObject);
         }
+    }
 
+    private void Start()
+    {
         if (Scene_Manager._SCENE_MANAGER.GetCurrentSceneName() == "003_Tutorial")
         {
             Game_Manager._Game_Manager.AddCurrency(10);

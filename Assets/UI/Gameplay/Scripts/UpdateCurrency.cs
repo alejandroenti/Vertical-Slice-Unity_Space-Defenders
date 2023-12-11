@@ -5,8 +5,14 @@ public class UpdateCurrency : MonoBehaviour
 {
     private TextMeshProUGUI currencyTextComponent;
 
-    public void UpdateText(int amount)
+    private void Awake()
     {
+        currencyTextComponent = GetComponent<TextMeshProUGUI>();
+    }
+
+    public void UpdateText(float amount)
+    {
+        //Debug.Log(currencyTextComponent.text + " - " + amount.ToString());
         currencyTextComponent.text = amount.ToString();
     }
 }

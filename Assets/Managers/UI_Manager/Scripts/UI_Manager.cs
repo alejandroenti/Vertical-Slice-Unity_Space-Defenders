@@ -10,6 +10,7 @@ public class UI_Manager : MonoBehaviour
     private GameObject cardInfoUI;
     private GameObject pauseMenu;
     private GameObject currency;
+    private GameObject enemyCounterObject;
 
     private MountDescriptionCard mountDescriptionCardScript;
 
@@ -37,6 +38,7 @@ public class UI_Manager : MonoBehaviour
     public void SetCurrency(GameObject newCurrency) => currency = newCurrency;
 
     public void SetPauseMenu(GameObject newPauseMenu) => pauseMenu = newPauseMenu;
+    public void SetEnemyCounter(GameObject newEnemyCounter) => enemyCounterObject = newEnemyCounter;
 
     public void OpenSettingsMenu()
     {
@@ -82,8 +84,13 @@ public class UI_Manager : MonoBehaviour
         cardSelected = null;
     }
 
-    public void UpdateCurrencyText(int amount)
+    public void UpdateCurrencyText(float amount)
     {
         currency.GetComponent<UpdateCurrency>().UpdateText(amount);
+    }
+
+    public void UpdateEnemyCounter(int enemyCounter)
+    {
+        enemyCounterObject.GetComponent<UpdateEnemyCounter>().UpdateText(enemyCounter);
     }
 }
