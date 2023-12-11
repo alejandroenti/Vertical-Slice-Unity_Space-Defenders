@@ -11,6 +11,8 @@ public class Game_Manager : MonoBehaviour
     private List<Card> cardDeck;
     private Card currentCardSelected;
 
+    private int currency = 0;
+
     private void Awake()
     {
         if (_Game_Manager != null && _Game_Manager != this)
@@ -42,6 +44,18 @@ public class Game_Manager : MonoBehaviour
     {
         Texture2D cardTexture = card.transform.GetChild(0).GetChild(1).GetComponent<Image>().sprite.texture;
         Cursor.SetCursor(cardTexture, Vector2.zero, CursorMode.Auto);
+    }
+
+    public void AddCurrency(int amount)
+    {
+        currency += amount;
+        UI_Manager._UI_MANAGER.UpdateCurrencyText(currency);
+    }
+
+    public void SubstractCurrency(int amount)
+    {
+        currency -= amount;
+        UI_Manager._UI_MANAGER.UpdateCurrencyText(currency);
     }
 
     public void StopTime()

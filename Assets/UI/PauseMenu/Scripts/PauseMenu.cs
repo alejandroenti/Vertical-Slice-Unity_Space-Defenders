@@ -5,6 +5,7 @@ public class PauseMenu : MonoBehaviour
     [Header("Pause and Settings Menu")]
     [SerializeField] private GameObject menuObject;
     [SerializeField] private GameObject settingsObject;
+    [SerializeField] private GameObject menuButtonObject;
 
     private bool isPauseMenuShown = false;
     private bool isSettingsShown = false;
@@ -19,9 +20,17 @@ public class PauseMenu : MonoBehaviour
     {
         isSettingsShown = settingsObject.activeSelf;
 
+        if (isPauseMenuShown)
+        {
+            menuButtonObject.SetActive(false);
+        }
+        else
+        {
+            menuButtonObject.SetActive(true);
+        }
+
         if (Input.GetButtonDown("Cancel"))
         {
-
             if (!isPauseMenuShown)
             {
                 UI_Manager._UI_MANAGER.OpenPauseMenu();
@@ -34,4 +43,6 @@ public class PauseMenu : MonoBehaviour
             }
         }
     }
+
+    public void SetIsPauseMenuShown(bool shown) => isPauseMenuShown = shown;
 }
