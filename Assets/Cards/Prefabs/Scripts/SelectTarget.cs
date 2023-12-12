@@ -4,8 +4,14 @@ public class SelectTarget : MonoBehaviour
 {
     private GameObject target;
     private float targetDistance = 1000000f;
-    public int range;
     private GameObject[] enemies;
+
+    private TowerStats towerStatsComponent;
+
+    private void Awake()
+    {
+        towerStatsComponent = GetComponent<TowerStats>();
+    }
 
     private void LateUpdate()
     {
@@ -16,7 +22,7 @@ public class SelectTarget : MonoBehaviour
             Vector3 distanceVector = enemies[i].transform.position - transform.position;
             float distance = distanceVector.magnitude;
 
-            if (distance < targetDistance && distance <= range)
+            if (distance < targetDistance && distance <= towerStatsComponent.GetVisionRange())
             {
                 target = enemies[i];
                 targetDistance = distance;

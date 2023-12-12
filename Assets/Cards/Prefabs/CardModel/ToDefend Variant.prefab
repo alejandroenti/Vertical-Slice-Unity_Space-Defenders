@@ -109,10 +109,16 @@ PrefabInstance:
       addedObject: {fileID: 819421088663872753}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: abf026bb4d09d9a49bda9153dc1a1d58, type: 3}
       insertIndex: -1
+      addedObject: {fileID: 2360054186743619767}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: abf026bb4d09d9a49bda9153dc1a1d58, type: 3}
+      insertIndex: -1
       addedObject: {fileID: 2130699619234196818}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: abf026bb4d09d9a49bda9153dc1a1d58, type: 3}
       insertIndex: -1
       addedObject: {fileID: 8426099604310098070}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: abf026bb4d09d9a49bda9153dc1a1d58, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 227974019632126646}
   m_SourcePrefab: {fileID: 100100000, guid: abf026bb4d09d9a49bda9153dc1a1d58, type: 3}
 --- !u!1 &5767737004546522672 stripped
 GameObject:
@@ -145,7 +151,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!65 &5569265372423767141
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -188,6 +194,22 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 1.25
   m_Center: {x: 0, y: 0.49999997, z: 0}
+--- !u!114 &2360054186743619767
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5767737004546522672}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2624bbf0eeb7c1b41b4575ac2f274154, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lifeAmount: 500
+  visionRange: 1.5
+  attackSpeed: 1
+  attackForce: 40
 --- !u!114 &2130699619234196818
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -200,7 +222,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1fc0317d55f41e8439ebd61c29215003, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  range: 1
 --- !u!114 &8426099604310098070
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -213,9 +234,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e40d198fde6b36e459046cf7884307ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shotTime: 1.5
   bulletPrefab: {fileID: 1176004569359872369, guid: 8110c957d28a17c4e8bab5788a781185, type: 3}
   shotClip: {fileID: 8300000, guid: 08ab2ec7fb4062046adb6e0039239d2e, type: 3}
+--- !u!114 &227974019632126646
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5767737004546522672}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a28e5204f207f04eb8f4008f5461d76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &6575482589592593546 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: abf026bb4d09d9a49bda9153dc1a1d58, type: 3}

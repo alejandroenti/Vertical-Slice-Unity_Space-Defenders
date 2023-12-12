@@ -3,7 +3,6 @@ using UnityEngine;
 public class ShotTower : MonoBehaviour
 {
     [Header("Shot Settings")]
-    [SerializeField] private float shotTime;
     [SerializeField] private GameObject bulletPrefab;
     [SerializeField] private AudioClip shotClip;
     
@@ -12,11 +11,14 @@ public class ShotTower : MonoBehaviour
     private GameObject target;
 
     private SelectTarget selectTargetComponent;
+    private TowerStats towerStatsComponent;
 
     private void Awake()
     {
         selectTargetComponent = GetComponent<SelectTarget>();
-        shotTimer = shotTime;
+        towerStatsComponent = GetComponent<TowerStats>();
+
+        shotTimer = towerStatsComponent.GetAttackSpeed();
     }
 
     private void Update()
@@ -27,7 +29,7 @@ public class ShotTower : MonoBehaviour
         {
             target = selectTargetComponent.GetTarget();
 
-            if (shotTimer >= shotTime)
+            if (shotTimer >= towerStatsComponent.GetAttackSpeed())
             {
                 Shot();
                 shotTimer = 0f;
@@ -39,6 +41,7 @@ public class ShotTower : MonoBehaviour
     {
         GameObject tempBullet = Instantiate(bulletPrefab, this.transform.GetChild(0));
         tempBullet.GetComponent<Bullet>().SetTaget(target);
+        tempBullet.GetComponent<Bullet>().SetDamage(towerStatsComponent.GetAttackForce());
         Audio_Manager._AUDIO_MANAGER.PlayFXSound(shotClip);
     }
 }

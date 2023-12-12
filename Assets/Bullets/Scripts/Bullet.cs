@@ -6,6 +6,7 @@ public class Bullet : MonoBehaviour
     [SerializeField] private float bulletSpeed;
 
     private GameObject target;
+    private float damage;
 
     private void Update()
     {
@@ -27,4 +28,6 @@ public class Bullet : MonoBehaviour
     }
 
     public void SetTaget(GameObject newTarget) => target = newTarget;
+    public void SetDamage(float newDamage) => damage = newDamage;
+    public float GetDamage() => damage;
 }

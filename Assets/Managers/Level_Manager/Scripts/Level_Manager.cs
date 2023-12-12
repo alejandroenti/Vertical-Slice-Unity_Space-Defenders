@@ -1,7 +1,10 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class Level_Manager : MonoBehaviour
 {
+    public static Level_Manager _LEVEL_MANAGER;
+
     [Header("Level Music")]
     [SerializeField] private AudioClip sceneMusic;
 
@@ -11,8 +14,13 @@ public class Level_Manager : MonoBehaviour
     [Header("Currency Gameplay UI")]
     [SerializeField] public GameObject currencyTextObject;
 
+    [SerializeField] private List<GameObject> towersList = new List<GameObject>();
+    private List<GameObject> enemiesList = new List<GameObject>();
+
     private void Awake()
     {
+        _LEVEL_MANAGER = this;
+
         Audio_Manager._AUDIO_MANAGER.PlayMusicSound(sceneMusic);
 
         if (cardInfoGameObject != null)
@@ -33,4 +41,12 @@ public class Level_Manager : MonoBehaviour
             Game_Manager._Game_Manager.AddCurrency(10);
         }
     }
+
+    public void AddTowerToLevel(GameObject tower) => towersList.Add(tower);
+    public List<GameObject> GetTowers() => towersList;
+    public void SetEnemies(List<GameObject> enemies) {
+        enemiesList.Clear();
+        enemiesList = enemies;
+    }
+    public List<GameObject> GetEnemies() => enemiesList;
 }
