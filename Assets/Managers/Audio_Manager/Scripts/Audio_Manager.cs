@@ -79,6 +79,12 @@ public class Audio_Manager : MonoBehaviour
         musicAudioSource.Play();
     }
 
+    public void PlayFXSound(AudioClip newClip)
+    {
+        fxAudioSource.clip = newClip;
+        fxAudioSource.Play();
+    }
+
     public void PlayUISound(AudioClip newClip)
     {
         uiAudioSource.clip = newClip;

@@ -16,12 +16,20 @@ public class SelectCardDeck : MonoBehaviour, IPointerEnterHandler, IPointerExitH
     {
         Audio_Manager._AUDIO_MANAGER.PlayUISound(hoverSound);
         UI_Manager._UI_MANAGER.SetCardSelected(currentCard);
-        UI_Manager._UI_MANAGER.ShowCardInfoUI();
+
+        if (Scene_Manager._SCENE_MANAGER.GetCurrentSceneName() == "002_Deck_Selection")
+        {
+            UI_Manager._UI_MANAGER.ShowCardInfoUI(currentCard);
+        }
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
         Audio_Manager._AUDIO_MANAGER.PlayUISound(exitdSound);
-        UI_Manager._UI_MANAGER.HideCardInfoUI();
+
+        if (Scene_Manager._SCENE_MANAGER.GetCurrentSceneName() == "002_Deck_Selection")
+        {
+            UI_Manager._UI_MANAGER.HideCardInfoUI();
+        }
     }
 }

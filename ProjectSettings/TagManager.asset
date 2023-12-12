@@ -9,6 +9,9 @@ TagManager:
   - CardInfo
   - PauseMenu
   - Currency
+  - Tower
+  - Enemy
+  - Bullet
   layers:
   - Default
   - TransparentFX

@@ -79,10 +79,10 @@ public class UI_Manager : MonoBehaviour
         Game_Manager._Game_Manager.ResumeTime();
     }
 
-    public void ShowCardInfoUI()
+    public void ShowCardInfoUI(Card card)
     {
         cardInfoUI.SetActive(true);
-        mountDescriptionCardScript.MountCard(cardSelected);
+        mountDescriptionCardScript.MountCard(card);
     }
 
     public void HideCardInfoUI()
@@ -123,13 +123,11 @@ public class UI_Manager : MonoBehaviour
 
     public void ShowDeckContainer()
     {
-        Debug.Log("SHOW");
         deckContainerObject.SetActive(true);
     }
 
     public void HideDeckContainer()
     {
-        Debug.Log("HIDE");
         deckContainerObject.SetActive(false);
     }
 }

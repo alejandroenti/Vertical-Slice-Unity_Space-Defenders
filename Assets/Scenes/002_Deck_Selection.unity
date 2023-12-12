@@ -1026,6 +1026,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CardPrefab
       objectReference: {fileID: 0}
+    - target: {fileID: 3445371144772902899, guid: 5776a2547e4fd854aa48b7de1bcb7e1a, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7620173312659510430, guid: 5776a2547e4fd854aa48b7de1bcb7e1a, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: -0.32348633

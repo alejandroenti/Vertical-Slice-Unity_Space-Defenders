@@ -41,7 +41,7 @@ public class GenerateCards : MonoBehaviour
             tempCardAspects.transform.GetChild(4).transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = cards[i].GetCardEffectAmount().ToString();
 
             // Pasamos la carta que estamos creando al Script SelectCardDeck para que tenga una referencia de ella misma como Carta
-            tempCard.transform.GetChild(0).GetComponent<SelectCardDeck>().SetCurrentCard(cards[i]);
+            tempCard.transform.GetChild(0).GetChild(0).GetComponent<SelectCardDeck>().SetCurrentCard(cards[i]);
         }
     }
 }
