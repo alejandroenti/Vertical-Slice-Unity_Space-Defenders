@@ -14,6 +14,7 @@ public class EnemyStats : MonoBehaviour
     [SerializeField] private float runningSpeed;
 
     public int GetID() => id;
+    public void SetID(int newID) => id = newID;
     public float GetLifeAmount() => lifeAmount;
     public void SubstractLife(float amount) => lifeAmount -= amount;
     public float GetVisionRange() => visionRange;

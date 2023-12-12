@@ -1,10 +1,11 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class SelectTarget : MonoBehaviour
 {
     private GameObject target;
     private float targetDistance = 1000000f;
-    private GameObject[] enemies;
+    private List<GameObject> enemies = new List<GameObject>();
 
     private TowerStats towerStatsComponent;
 
@@ -15,9 +16,14 @@ public class SelectTarget : MonoBehaviour
 
     private void LateUpdate()
     {
-        enemies = GameObject.FindGameObjectsWithTag("Enemy");
+        enemies = Level_Manager._LEVEL_MANAGER.GetEnemies();
 
-        for (int i = 0; i < enemies.Length; i++)
+        if (target == null)
+        {
+            targetDistance = 1000000f;
+        }
+
+        for (int i = 0; i < enemies.Count; i++)
         {
             Vector3 distanceVector = enemies[i].transform.position - transform.position;
             float distance = distanceVector.magnitude;

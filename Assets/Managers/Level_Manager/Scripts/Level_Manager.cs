@@ -15,7 +15,7 @@ public class Level_Manager : MonoBehaviour
     [SerializeField] public GameObject currencyTextObject;
 
     [SerializeField] private List<GameObject> towersList = new List<GameObject>();
-    private List<GameObject> enemiesList = new List<GameObject>();
+    [SerializeField] private List<GameObject> enemiesList = new List<GameObject>();
 
     private void Awake()
     {
@@ -44,9 +44,29 @@ public class Level_Manager : MonoBehaviour
 
     public void AddTowerToLevel(GameObject tower) => towersList.Add(tower);
     public List<GameObject> GetTowers() => towersList;
-    public void SetEnemies(List<GameObject> enemies) {
-        enemiesList.Clear();
-        enemiesList = enemies;
+    public void RemoveTower(GameObject tower)
+    {
+        for (int i = 0; i < towersList.Count; i++)
+        {
+            if (tower.GetComponent<TowerStats>().GetID() == towersList[i].GetComponent<TowerStats>().GetID())
+            {
+                towersList.RemoveAt(i);
+                return;
+            }
+        }
     }
+    public void AddEnemyToRound(GameObject enemy) => enemiesList.Add(enemy);
     public List<GameObject> GetEnemies() => enemiesList;
+    public void ClearEnemiesList() => enemiesList.Clear();
+    public void RemoveEnemy(GameObject enemy)
+    {
+        for (int i = 0; i < enemiesList.Count; i++)
+        {
+            if (enemy.GetComponent<EnemyStats>().GetID() == enemiesList[i].GetComponent<EnemyStats>().GetID())
+            {
+                enemiesList.RemoveAt(i);
+                return;
+            }
+        }
+    }
 }

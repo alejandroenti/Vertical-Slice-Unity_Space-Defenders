@@ -16,6 +16,7 @@ public class DetectEnemyDamage : MonoBehaviour
         if (towerStatsComponent.GetLifeAmount() <= 0)
         {
             // Avisar level manager
+            Level_Manager._LEVEL_MANAGER.RemoveTower(this.gameObject);
             Destroy(this.gameObject);
         }
     }

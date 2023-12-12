@@ -1,4 +1,6 @@
 using System.Collections.Generic;
+using System.Net;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -139,9 +141,15 @@ public class EnemyStateMachine : MonoBehaviour
 
         if (attackTimer >= enemyStatsComponent.GetAttackSpeed())
         {
-            Audio_Manager._AUDIO_MANAGER.PlayFXSound(attackClip);
-            towerTarget.GetComponent<DetectEnemyDamage>().TakeDamage(enemyStatsComponent.GetAttackForce());
-            attackTimer = 0f;
+            try
+            {
+                Audio_Manager._AUDIO_MANAGER.PlayFXSound(attackClip);
+                towerTarget.GetComponent<DetectEnemyDamage>().TakeDamage    (enemyStatsComponent.GetAttackForce());
+                attackTimer = 0f;
+            } catch
+            {
+                return;
+            }
         }
     }
 }

@@ -1,19 +1,21 @@
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Spawn_Manager : MonoBehaviour
 {
     public static Spawn_Manager _SPAWN_MANAGER;
 
-    public enum enemyClasses { BASIC, RANGE, MID, BOSS }
+    [Header("Spawn Settings")]
+    [SerializeField] private float spawnTime = 0.75f;
+    [SerializeField] private int roundEnemies = 0;
 
-    [SerializeField] private List<GameObject> enemiesToSpawn = new List<GameObject>();
+    [Header("Spawn Postion")]
     [SerializeField] private Transform spawnPosition;
+    
+    [Header("Enemy Prefab")]
+    [SerializeField] private GameObject enemyPrefab;
 
-    // private int roundEnemies = 0;
-    public int roundEnemies = 0;
     private float spawnTimer = 0.0f;
-    private float spawnTime = 0.75f;
+    private int roundEnemyID = 0;
 
     private void Start()
     {
@@ -26,15 +28,23 @@ public class Spawn_Manager : MonoBehaviour
 
         if (spawnTimer >= spawnTime && roundEnemies > 0)
         {
-            SpawnEnemy(enemyClasses.BASIC);
+            SpawnEnemy(enemyPrefab);
+            roundEnemyID++;
         }
     }
 
-    public void SetRoundEnemies(int roundEnemies) => this.roundEnemies = roundEnemies;
-
-    private void SpawnEnemy(enemyClasses enemyClass)
+    public int GetRoundEnemies() => roundEnemies;
+    public void SetRoundEnemies(int roundEnemies)
     {
-        Instantiate(enemiesToSpawn[(int)enemyClass], spawnPosition.position, Quaternion.identity);
+        this.roundEnemies = roundEnemies;
+        this.roundEnemyID = 0;
+    }
+
+    private void SpawnEnemy(GameObject enemy)
+    {
+        GameObject tempEnemy = Instantiate(enemy, spawnPosition.position, Quaternion.identity);
+        tempEnemy.GetComponent<EnemyStats>().SetID(roundEnemyID);
+        Level_Manager._LEVEL_MANAGER.AddEnemyToRound(tempEnemy);
         
         spawnTimer = 0.0f;
         roundEnemies--;

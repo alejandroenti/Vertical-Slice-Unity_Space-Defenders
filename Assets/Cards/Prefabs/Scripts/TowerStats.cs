@@ -3,7 +3,7 @@ using UnityEngine;
 public class TowerStats : MonoBehaviour
 {
     [Header("Tower Stats")]
-    private int id;
+    [SerializeField] private int id;
     [SerializeField] private float lifeAmount;
     [SerializeField] private float visionRange;
     [SerializeField] private float attackSpeed;
