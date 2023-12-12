@@ -9,13 +9,17 @@ public class Bullet : MonoBehaviour
 
     private void Update()
     {
+        if (target == null)
+        {
+            Destroy(this.gameObject);
+        }
+
         Vector3 positionLerp = Vector3.Lerp(this.transform.position, target.transform.position, bulletSpeed * Time.deltaTime);
         transform.position = positionLerp;
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log(other.tag + " - BULLET");
         if (other.tag == "Enemy")
         {
             Destroy(this.gameObject);
