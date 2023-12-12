@@ -22,7 +22,7 @@ public class Grid_Manager : MonoBehaviour
     private float positionX;
     private float positionZ;
 
-    private float yValue = 0.32f;
+    private float yValue = 0.45f;
     private float offset = 0.5f;
 
     private void Awake()
