@@ -48,6 +48,7 @@ public class Game_Manager : MonoBehaviour
         Cursor.SetCursor(cardTexture, Vector2.zero, CursorMode.Auto);
     }
 
+    public int GetCurrency() => currency;
     public void AddCurrency(int amount)
     {
         currency += amount;

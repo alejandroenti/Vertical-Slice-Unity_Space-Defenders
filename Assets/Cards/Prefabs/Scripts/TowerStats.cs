@@ -17,4 +17,5 @@ public class TowerStats : MonoBehaviour
     public float GetVisionRange() => visionRange;
     public float GetAttackSpeed() => attackSpeed;
     public float GetAttackForce() => attackForce;
+    public float SetAttackForce(float amount) => attackForce = amount;
 }

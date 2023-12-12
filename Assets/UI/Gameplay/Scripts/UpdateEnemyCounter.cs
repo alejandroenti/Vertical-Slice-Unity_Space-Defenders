@@ -8,7 +8,7 @@ public class UpdateEnemyCounter : MonoBehaviour
     private void Awake()
     {
         UI_Manager._UI_MANAGER.SetEnemyCounter(gameObject);
-        textComponent = GetComponent<TextMeshProUGUI>();
+        textComponent = this.transform.GetChild(0).GetComponent<TextMeshProUGUI>();
     }
 
     public void UpdateText(int amount)

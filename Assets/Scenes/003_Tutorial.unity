@@ -1181,7 +1181,6 @@ GameObject:
   - component: {fileID: 454371285}
   - component: {fileID: 454371287}
   - component: {fileID: 454371286}
-  - component: {fileID: 454371288}
   m_Layer: 5
   m_Name: EnemiesNumber
   m_TagString: Untagged
@@ -1306,18 +1305,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 454371284}
   m_CullTransparentMesh: 1
---- !u!114 &454371288
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 454371284}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1a602f8edd0e3d44cb197d2cb8248b8a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &467632458
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2258,6 +2245,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 827088491}
+  - component: {fileID: 827088492}
   m_Layer: 5
   m_Name: EnemiesRound
   m_TagString: Untagged
@@ -2287,6 +2275,18 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 400, y: 200}
   m_Pivot: {x: 0.5, y: 0}
+--- !u!114 &827088492
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 827088490}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a602f8edd0e3d44cb197d2cb8248b8a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &838287414
 GameObject:
   m_ObjectHideFlags: 0
@@ -2470,6 +2470,10 @@ PrefabInstance:
       propertyPath: towersList.Array.data[1]
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 873271781327453250, guid: 5b394c62f23333c4e985ab8376dd15c7, type: 3}
+      propertyPath: gameplayStateMachineObject
+      value: 
+      objectReference: {fileID: 1333451747}
     - target: {fileID: 2192585512829179807, guid: 5b394c62f23333c4e985ab8376dd15c7, type: 3}
       propertyPath: m_RootOrder
       value: 4
@@ -2915,6 +2919,11 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 450, y: 150}
   m_Pivot: {x: 0.5, y: 1}
+--- !u!1 &1333451747 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3460233439225180089, guid: f24f06b8adeb9724fb9c3e7cf20eed72, type: 3}
+  m_PrefabInstance: {fileID: 2403374307317057448}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1359296873
 GameObject:
   m_ObjectHideFlags: 0
@@ -4385,7 +4394,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7981926470378720043, guid: f24f06b8adeb9724fb9c3e7cf20eed72, type: 3}
       propertyPath: userActionMaxTime
-      value: 30
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 7981926470378720043, guid: f24f06b8adeb9724fb9c3e7cf20eed72, type: 3}
       propertyPath: startingStageMaxTime

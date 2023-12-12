@@ -14,7 +14,8 @@ public class Level_Manager : MonoBehaviour
     [Header("Currency Gameplay UI")]
     [SerializeField] public GameObject currencyTextObject;
 
-    private List<GameObject> towersList = new List<GameObject>();
+    [Header("Tower List")]
+    [SerializeField] private List<GameObject> towersList = new List<GameObject>();
     private List<GameObject> enemiesList = new List<GameObject>();
 
     private void Awake()
@@ -38,7 +39,7 @@ public class Level_Manager : MonoBehaviour
     {
         if (Scene_Manager._SCENE_MANAGER.GetCurrentSceneName() == "003_Tutorial")
         {
-            Game_Manager._Game_Manager.AddCurrency(10);
+            Game_Manager._Game_Manager.AddCurrency(200);
         }
     }
 

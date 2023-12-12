@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class SelectHandler : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, ISelectHandler, IDeselectHandler, IPointerClickHandler
+public class SelectHandler : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, ISelectHandler, IDeselectHandler, IPointerDownHandler
 {
     [Header("Animation Settings")]
     [SerializeField] private float verticalAmount = 25f;
@@ -56,12 +56,14 @@ public class SelectHandler : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
         StartAnimation(false);
     }
 
-    public void OnPointerClick(PointerEventData eventData)
+    public void OnPointerDown(PointerEventData eventData)
     {
         UI_Manager._UI_MANAGER.HideDeckContainer();
         Grid_Manager._Grid_Manager.GenerateGrid();
         Game_Manager._Game_Manager.SetCurrentCard(currentCard);
         Game_Manager._Game_Manager.SetModelInCursor(gameObject);
+
+        eventData.selectedObject = null;
     }
 
     public void SetCurrentCard(Card newCard) => currentCard = newCard;

@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Tower_002
   m_EditorClassIdentifier: 
   cardName: Tower_002
-  cardDescription: Provokes to enemy
+  cardDescription: Shots an enemy dealing 21 of damage
   cardArtwork: {fileID: 21300000, guid: 06e8bf41f97505d40a6c6cbd3768325a, type: 3}
   cardCost: 125
-  cardEffectAmount: 0
+  cardEffectAmount: 21
   cardModel: {fileID: 4429402151462889835, guid: eeaf7d149e1c4654d91fa7a8f34e341e, type: 3}

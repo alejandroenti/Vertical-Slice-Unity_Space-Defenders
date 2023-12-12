@@ -96,6 +96,9 @@ public class UI_Manager : MonoBehaviour
         currency.GetComponent<UpdateCurrency>().UpdateText(amount);
     }
 
+    public void ShowEnemyCounter() => enemyCounterObject.SetActive(true);
+    public void HideEnemyCounter() => enemyCounterObject.SetActive(false);
+
     public void UpdateEnemyCounter(int enemyCounter)
     {
         enemyCounterObject.GetComponent<UpdateEnemyCounter>().UpdateText(enemyCounter);
@@ -119,6 +122,17 @@ public class UI_Manager : MonoBehaviour
     public void SetNewCardToHand(Card newCard, int position)
     {
         deckContainerObject.GetComponent<PlaceCards>().PlaceCard(newCard, position);
+    }
+
+    public void ClearHand()
+    {
+        for (int i = 0; i < deckContainerObject.transform.childCount; i++)
+        {
+            if (deckContainerObject.transform.GetChild(i).childCount > 0)
+            {
+                Destroy(deckContainerObject.transform.GetChild(i).GetChild(0).gameObject);
+            }
+        }
     }
 
     public void ShowDeckContainer()

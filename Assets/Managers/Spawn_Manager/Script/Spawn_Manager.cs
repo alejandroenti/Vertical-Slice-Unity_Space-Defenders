@@ -19,9 +19,14 @@ public class Spawn_Manager : MonoBehaviour
 
     private bool isRoundStarted = false;
 
+    private void Awake()
+    {
+        _SPAWN_MANAGER = this;
+    }
+
     private void Start()
     {
-        UI_Manager._UI_MANAGER.UpdateEnemyCounter(roundEnemies);
+        UI_Manager._UI_MANAGER.HideEnemyCounter();
     }
 
     private void Update()
@@ -43,9 +48,16 @@ public class Spawn_Manager : MonoBehaviour
     {
         this.roundEnemies = roundEnemies;
         this.roundEnemyID = 0;
+        UI_Manager._UI_MANAGER.ShowEnemyCounter();
+        UI_Manager._UI_MANAGER.UpdateEnemyCounter(this.roundEnemies);
     }
 
-    public void SetIsRoundStarted(bool newState) => isRoundStarted = newState;
+    public bool GetIsRoundStarted() => isRoundStarted;
+    public void SetIsRoundStarted(bool newState)
+    {
+        isRoundStarted = newState;
+        UI_Manager._UI_MANAGER.UpdateEnemyCounter(roundEnemies);
+    }
 
     private void SpawnEnemy(GameObject enemy)
     {

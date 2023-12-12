@@ -12,11 +12,21 @@ public class GridTile : MonoBehaviour
 
     private void OnMouseDown()
     {
-        Card card = Game_Manager._Game_Manager.GetCard();
-        GameObject modelTowerPrefab = card.GetCardModel();
-        GameObject tempTower = Instantiate(modelTowerPrefab, new Vector3(this.transform.position.x, 0.3f, this.transform.position.z), Quaternion.identity);
 
-        tempTower.name = card.GetCardName();
+        Card card = Game_Manager._Game_Manager.GetCard();
+
+        if (Game_Manager._Game_Manager.GetCurrency() >= card.GetCardCost())
+        {
+            Game_Manager._Game_Manager.SubstractCurrency(card.GetCardCost());
+
+            GameObject modelTowerPrefab = card.GetCardModel();
+            GameObject tempTower = Instantiate(modelTowerPrefab, new Vector3(this.transform.position.x, 0.3f, this.transform.position.z), Quaternion.identity);
+
+            tempTower.name = card.GetCardName();
+            tempTower.GetComponent<TowerStats>().SetID(card.GetCardID());
+            tempTower.GetComponent<TowerStats>().SetAttackForce(card.GetCardEffectAmount());
+
+        }
 
         Reset();
     }

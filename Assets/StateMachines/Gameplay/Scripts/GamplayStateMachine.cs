@@ -16,11 +16,15 @@ public class GamplayStateMachine : MonoBehaviour
     [SerializeField] private float shuffleMaxTime = 8f;
     [SerializeField] private float userActionMaxTime = 10f;
 
+    [Header("Enemy Numbers")]
+    [SerializeField] private int[] enemies = { 4, 7 };
+
     private int currentRound = 1;
     private States currentState = States.START_STAGE;
 
     private List<Card> original = new List<Card>();
     private List<Card> cards = new List<Card>();
+    private List<Card> playedCards = new List<Card>();
 
     private float startingStagetimer = 0f;
     private float userActiontimer = 0f;
@@ -71,6 +75,33 @@ public class GamplayStateMachine : MonoBehaviour
         }
     }
 
+    public void CardPlayed(Card card)
+    {
+        for (int i = 0; i < cards.Count; i++)
+        {
+            if (cards[i].GetCardID() == card.GetCardID())
+            {
+                playedCards.Add(cards[i]);
+                cards.RemoveAt(i);
+                return;
+            }
+        }
+    }
+
+    public void UpgradeCard(Card card)
+    {
+        for (int i = 0; i < playedCards.Count; i++)
+        {
+            if (playedCards[i].GetCardID() == card.GetCardID())
+            {
+                playedCards.Add(card);
+                card.SetCardID(playedCards[i].GetCardID());
+                playedCards.RemoveAt(i);
+                return;
+            }
+        }
+    }
+
     private void StartStage()
     {
         UI_Manager._UI_MANAGER.UpdateCurrentState("STARTING STAGE");
@@ -112,30 +143,67 @@ public class GamplayStateMachine : MonoBehaviour
 
         if (userActiontimer >= userActionMaxTime)
         {
-            currentState = States.START_STAGE;
+            currentState = States.BATTLE;
             userActiontimer = 0f;
+            DeleteHandCards();
             UI_Manager._UI_MANAGER.HideDeckContainer();
         }
     }
 
     private void Battle()
     {
+        UI_Manager._UI_MANAGER.UpdateCurrentState("BATTLE");
 
+        if (!Spawn_Manager._SPAWN_MANAGER.GetIsRoundStarted() && !isStateWorking)
+        {
+            // Iniciamos el spawner de enemigos
+            Spawn_Manager._SPAWN_MANAGER.SetRoundEnemies(enemies[currentRound - 1]);
+            Spawn_Manager._SPAWN_MANAGER.SetIsRoundStarted(true);
+            isStateWorking = true;
+            return;
+        }
+
+        // Revisamos si no hay torres en el nivel o no hay enemigos en la ronda
+        if (Level_Manager._LEVEL_MANAGER.GetTowers().Count <= 0 || (Level_Manager._LEVEL_MANAGER.GetEnemies().Count <= 0 && !Spawn_Manager._SPAWN_MANAGER.GetIsRoundStarted()))
+        {
+            currentState = States.USER_ALIVE;
+            Spawn_Manager._SPAWN_MANAGER.SetIsRoundStarted(false);
+            isStateWorking = false;
+        }
     }
 
     private void UserAlive()
     {
+        UI_Manager._UI_MANAGER.UpdateCurrentState("CHECKING END ROUND");
 
+        if (Level_Manager._LEVEL_MANAGER.GetTowers().Count > 0)
+        {
+            if (currentRound == totalRounds)
+            {
+                currentState = States.STAGE_CLEAR;
+            }
+            else
+            {
+                currentRound++;
+                UI_Manager._UI_MANAGER.UpdateCurrentRound(currentRound);
+                currentState = States.SHUFFLE_DECK;
+            }
+        }
+        else
+        {
+            currentState = States.DEATH;
+        }
     }
 
     private void Death()
     {
+        UI_Manager._UI_MANAGER.UpdateCurrentState("DEATH");
 
     }
 
     private void StageClear()
     {
-
+        UI_Manager._UI_MANAGER.UpdateCurrentState("STAGE CLEAR");
     }
 
     private List<Card> Shuffle(List<Card> deck)
@@ -168,5 +236,10 @@ public class GamplayStateMachine : MonoBehaviour
         {
             UI_Manager._UI_MANAGER.SetNewCardToHand(cards[i], i);
         }
+    }
+
+    private void DeleteHandCards()
+    {
+        UI_Manager._UI_MANAGER.ClearHand();
     }
 }
