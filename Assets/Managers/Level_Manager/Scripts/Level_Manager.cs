@@ -14,8 +14,8 @@ public class Level_Manager : MonoBehaviour
     [Header("Currency Gameplay UI")]
     [SerializeField] public GameObject currencyTextObject;
 
-    [SerializeField] private List<GameObject> towersList = new List<GameObject>();
-    [SerializeField] private List<GameObject> enemiesList = new List<GameObject>();
+    private List<GameObject> towersList = new List<GameObject>();
+    private List<GameObject> enemiesList = new List<GameObject>();
 
     private void Awake()
     {
@@ -42,7 +42,11 @@ public class Level_Manager : MonoBehaviour
         }
     }
 
-    public void AddTowerToLevel(GameObject tower) => towersList.Add(tower);
+    public void AddTowerToLevel(GameObject tower)
+    {
+        towersList.Add(tower);
+        tower.GetComponent<TowerStats>().SetID(towersList.Count - 1);
+    }
     public List<GameObject> GetTowers() => towersList;
     public void RemoveTower(GameObject tower)
     {

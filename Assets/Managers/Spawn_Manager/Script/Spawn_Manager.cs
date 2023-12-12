@@ -17,6 +17,8 @@ public class Spawn_Manager : MonoBehaviour
     private float spawnTimer = 0.0f;
     private int roundEnemyID = 0;
 
+    private bool isRoundStarted = false;
+
     private void Start()
     {
         UI_Manager._UI_MANAGER.UpdateEnemyCounter(roundEnemies);
@@ -24,12 +26,15 @@ public class Spawn_Manager : MonoBehaviour
 
     private void Update()
     {
-        spawnTimer += Time.deltaTime;
-
-        if (spawnTimer >= spawnTime && roundEnemies > 0)
+        if (isRoundStarted)
         {
-            SpawnEnemy(enemyPrefab);
-            roundEnemyID++;
+            spawnTimer += Time.deltaTime;
+
+            if (spawnTimer >= spawnTime && roundEnemies > 0)
+            {
+                SpawnEnemy(enemyPrefab);
+                roundEnemyID++;
+            }
         }
     }
 
@@ -40,6 +45,8 @@ public class Spawn_Manager : MonoBehaviour
         this.roundEnemyID = 0;
     }
 
+    public void SetIsRoundStarted(bool newState) => isRoundStarted = newState;
+
     private void SpawnEnemy(GameObject enemy)
     {
         GameObject tempEnemy = Instantiate(enemy, spawnPosition.position, Quaternion.identity);
@@ -48,5 +55,10 @@ public class Spawn_Manager : MonoBehaviour
         
         spawnTimer = 0.0f;
         roundEnemies--;
+
+        if (roundEnemies <= 0)
+        {
+            isRoundStarted = false;
+        }
     }
 }

@@ -10,6 +10,7 @@ public class TowerStats : MonoBehaviour
     [SerializeField] private float attackForce;
 
     public int GetID() => id;
+    public void SetID(int newID) => id = newID;
     public float GetLifeAmount() => lifeAmount;
     public void RestoreLife(float amount) => lifeAmount += amount;
     public void SubstractLife(float amount) => lifeAmount -= amount;
