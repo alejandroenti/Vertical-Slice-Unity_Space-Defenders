@@ -108,7 +108,7 @@ public class GamplayStateMachine : MonoBehaviour
 
     private void StartStage()
     {
-
+        Level_Manager._LEVEL_MANAGER.SetCurrentStateRound("StartStage");
         UI_Manager._UI_MANAGER.UpdateCurrentState("STARTING STAGE");
 
         startingStagetimer += Time.deltaTime;
@@ -125,6 +125,7 @@ public class GamplayStateMachine : MonoBehaviour
     {
         isStateWorking = true;
 
+        Level_Manager._LEVEL_MANAGER.SetCurrentStateRound("ShuffleDeck");
         UI_Manager._UI_MANAGER.UpdateCurrentState("SHUFFLING CARDS");
 
         // BARAJAR LAS CARTAS ACTUALES
@@ -144,7 +145,7 @@ public class GamplayStateMachine : MonoBehaviour
 
     private void UserAction()
     {
-
+        Level_Manager._LEVEL_MANAGER.SetCurrentStateRound("UserAction");
         UI_Manager._UI_MANAGER.UpdateCurrentState("USER ACTION - " + (int)(userActionMaxTime - userActiontimer));
 
         userActiontimer += Time.deltaTime;
@@ -161,6 +162,7 @@ public class GamplayStateMachine : MonoBehaviour
 
     private void Battle()
     {
+        Level_Manager._LEVEL_MANAGER.SetCurrentStateRound("Battle");
         UI_Manager._UI_MANAGER.UpdateCurrentState("BATTLE");
 
         if (!Spawn_Manager._SPAWN_MANAGER.GetIsRoundStarted() && !isStateWorking)
@@ -184,6 +186,7 @@ public class GamplayStateMachine : MonoBehaviour
 
     private void UserAlive()
     {
+        Level_Manager._LEVEL_MANAGER.SetCurrentStateRound("UserAlive");
         UI_Manager._UI_MANAGER.UpdateCurrentState("CHECKING END ROUND");
 
         if (Level_Manager._LEVEL_MANAGER.GetTowers().Count > 0)
@@ -207,13 +210,17 @@ public class GamplayStateMachine : MonoBehaviour
 
     private void Death()
     {
+        Level_Manager._LEVEL_MANAGER.SetCurrentStateRound("Death");
         UI_Manager._UI_MANAGER.UpdateCurrentState("DEATH");
+        UI_Manager._UI_MANAGER.ShowLoseMenu();
 
     }
 
     private void StageClear()
     {
+        Level_Manager._LEVEL_MANAGER.SetCurrentStateRound("StageClear");
         UI_Manager._UI_MANAGER.UpdateCurrentState("STAGE CLEAR");
+        UI_Manager._UI_MANAGER.ShowWinMenu();
     }
 
     private List<Card> Shuffle(List<Card> deck)

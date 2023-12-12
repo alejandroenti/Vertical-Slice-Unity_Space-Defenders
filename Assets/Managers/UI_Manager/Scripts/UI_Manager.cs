@@ -4,6 +4,10 @@ public class UI_Manager : MonoBehaviour
 {
     public static UI_Manager _UI_MANAGER;
 
+    [Header("Wind And Lose Menu")]
+    [SerializeField] private GameObject winMenu;
+    [SerializeField] private GameObject loseMenu;
+
     private Card cardSelected;
 
     private GameObject settingsMenu;
@@ -123,6 +127,11 @@ public class UI_Manager : MonoBehaviour
         deckContainerObject.GetComponent<PlaceCards>().PlaceCard(newCard, position);
     }
 
+    public void RemoveCardToHand(int position)
+    {
+        Destroy(deckContainerObject.transform.GetChild(position).GetChild(0).gameObject);
+    }
+
     public void ClearHand()
     {
         for (int i = 0; i < deckContainerObject.transform.childCount; i++)
@@ -154,5 +163,25 @@ public class UI_Manager : MonoBehaviour
     {
         textObject.SetActive(false);
         Game_Manager._Game_Manager.ResumeTime();
+    }
+
+    public void ShowInfoGameplay(GameObject infoObject)
+    {
+        infoObject.SetActive(true);
+    }
+
+    public void HideInfoGameplay(GameObject infoObject)
+    {
+        infoObject.SetActive(false);
+    }
+
+    public void ShowWinMenu()
+    {
+        winMenu.SetActive(true);
+    }
+
+    public void ShowLoseMenu()
+    {
+        loseMenu.SetActive(true);
     }
 }

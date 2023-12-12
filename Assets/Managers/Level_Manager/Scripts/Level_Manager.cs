@@ -18,6 +18,11 @@ public class Level_Manager : MonoBehaviour
     [SerializeField] private List<GameObject> towersList = new List<GameObject>();
     private List<GameObject> enemiesList = new List<GameObject>();
 
+    [Header("Gameplay State Machine")]
+    [SerializeField] private GameObject gstObject;
+
+    private string roundState = "";
+
     private void Awake()
     {
         _LEVEL_MANAGER = this;
@@ -44,6 +49,9 @@ public class Level_Manager : MonoBehaviour
         }
 
     }
+
+    public void SetCurrentStateRound(string state) => roundState = state;
+    public string GetRoundState() => roundState;
 
     public void AddTowerToLevel(GameObject tower)
     {
@@ -75,5 +83,10 @@ public class Level_Manager : MonoBehaviour
                 return;
             }
         }
+    }
+
+    public void Upgrade(Card card)
+    {
+        gstObject.GetComponent<GamplayStateMachine>().UpgradeCard(card);
     }
 }

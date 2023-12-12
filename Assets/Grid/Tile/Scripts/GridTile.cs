@@ -12,7 +12,6 @@ public class GridTile : MonoBehaviour
 
     private void OnMouseDown()
     {
-
         Card card = Game_Manager._Game_Manager.GetCard();
 
         if (Game_Manager._Game_Manager.GetCurrency() >= card.GetCardCost())
@@ -25,7 +24,11 @@ public class GridTile : MonoBehaviour
             tempTower.name = card.GetCardName();
             tempTower.GetComponent<TowerStats>().SetID(card.GetCardID());
             tempTower.GetComponent<TowerStats>().SetAttackForce(card.GetCardEffectAmount());
+            tempTower.GetComponent<TowerStats>().SetCurrentCard(card);
 
+            Level_Manager._LEVEL_MANAGER.AddTowerToLevel(tempTower);
+
+            UI_Manager._UI_MANAGER.RemoveCardToHand(Game_Manager._Game_Manager.GetCardPosition());
         }
 
         Reset();
@@ -34,7 +37,7 @@ public class GridTile : MonoBehaviour
     private void Reset()
     {
         Grid_Manager._Grid_Manager.DestroyGrid();
-        Game_Manager._Game_Manager.SetCurrentCard(null);
+        Game_Manager._Game_Manager.SetCurrentCard(null, -1);
         Game_Manager._Game_Manager.ResetCursor();
 
         UI_Manager._UI_MANAGER.ShowDeckContainer();

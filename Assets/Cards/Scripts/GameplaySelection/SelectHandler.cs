@@ -8,7 +8,7 @@ public class SelectHandler : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     [SerializeField] private float moveTime = 0.1f;
     [SerializeField, Range(1f, 2f)] private float scaleAmount = 1.1f;
 
-    public Card currentCard;
+    private Card currentCard;
 
     // Variables que guardan la posición y la escala inicial
     private Vector3 initialPosition;
@@ -60,7 +60,7 @@ public class SelectHandler : MonoBehaviour, IPointerEnterHandler, IPointerExitHa
     {
         UI_Manager._UI_MANAGER.HideDeckContainer();
         Grid_Manager._Grid_Manager.GenerateGrid();
-        Game_Manager._Game_Manager.SetCurrentCard(currentCard);
+        Game_Manager._Game_Manager.SetCurrentCard(currentCard, Game_Manager._Game_Manager.GetCardPosition());
         Game_Manager._Game_Manager.SetModelInCursor(gameObject);
 
         eventData.selectedObject = null;

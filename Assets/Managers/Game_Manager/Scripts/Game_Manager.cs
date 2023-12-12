@@ -10,6 +10,7 @@ public class Game_Manager : MonoBehaviour
 
     private List<Card> cardDeck;
     private Card currentCardSelected;
+    private int currentCardIndex;
 
     private int currency = 0;
 
@@ -38,9 +39,14 @@ public class Game_Manager : MonoBehaviour
     public List<Card> GetCardDeck() => cardDeck;
 
     public void SetCurrentScene(string sceneName) => currentScene = sceneName;
-    public void SetCurrentCard(Card newCard) => currentCardSelected = newCard;
+    public void SetCurrentCard(Card newCard, int position)
+    {
+        currentCardSelected = newCard;
+        currentCardIndex = position;
+    }
 
     public Card GetCard() => currentCardSelected;
+    public int GetCardPosition() => currentCardIndex;
 
     public void SetModelInCursor(GameObject card)
     {

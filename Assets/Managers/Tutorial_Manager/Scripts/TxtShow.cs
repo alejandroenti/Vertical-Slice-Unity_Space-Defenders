@@ -5,7 +5,7 @@ public class TxtShow : MonoBehaviour
     [Header("Text timer")]
     [SerializeField] private float textTime;
 
-    public float textTimer = 0f;
+    private float textTimer = 0f;
 
     private void Update()
     {
