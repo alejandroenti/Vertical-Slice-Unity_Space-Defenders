@@ -4,10 +4,12 @@ using UnityEngine.AI;
 
 public class EnemyStateMachine : MonoBehaviour
 {
-    private enum States { STARTING, WALKING, ATTACKING, FINISHED }
+    [Header("Attack Audio")]
+    [SerializeField] private AudioClip attackClip;
+    public enum States { STARTING, WALKING, ATTACKING, FINISHED, NULL }
 
     private States currentState = States.STARTING;
-    private float attackTimer = 0f;
+    private float attackTimer = 0.504f;
 
     private NavMeshAgent agent;
     private Vector3 finalPosition;
@@ -47,13 +49,14 @@ public class EnemyStateMachine : MonoBehaviour
 
     private void Starting()
     {
-        ChangeState(finalPosition, States.WALKING);
+        ChangeState(finalPosition, States.WALKING, enemyStatsComponent.GetWalkingSpeed());
     }
 
     private void Walking()
     {
         // Miro si hay algún objetivo en mi campo de visión
         // Si lo hay, cambio de estado a ATTACKING
+        agent.speed = enemyStatsComponent.GetWalkingSpeed();
         CheckIfIsAnyTowerVisible();
     }
 
@@ -69,20 +72,21 @@ public class EnemyStateMachine : MonoBehaviour
             // Si no lo está, cambio de estado a WALKING
             if (towerTarget == null)
             {
-                ChangeState(finalPosition, States.WALKING);
+                ChangeState(finalPosition, States.WALKING, enemyStatsComponent.GetWalkingSpeed());
             }
         }
     }
 
     private void Finished()
     {
-
+        StayOnPlace();
     }
 
-    private void ChangeState(Vector3 position, States newState)
+    private void ChangeState(Vector3 position, States newState, float speed)
     {
         targetPosition = position;
         agent.SetDestination(targetPosition);
+        agent.speed = speed;
         currentState = newState;
     }
 
@@ -92,7 +96,7 @@ public class EnemyStateMachine : MonoBehaviour
 
         if (towers.Count <= 0)
         {
-            ChangeState(transform.position, States.FINISHED); 
+            ChangeState(transform.position, States.FINISHED, enemyStatsComponent.GetWalkingSpeed()); 
             return;
         }
 
@@ -107,7 +111,7 @@ public class EnemyStateMachine : MonoBehaviour
 
                 if (Vector3.Angle(transform.forward, positionVector) <= enemyStatsComponent.GetVisionAngle())
                 {
-                    ChangeState(towers[i].transform.position, States.ATTACKING);
+                    ChangeState(towers[i].transform.position, States.ATTACKING, enemyStatsComponent.GetRunningSpeed());
                     towerTarget = towers[i];
                 }
             }
@@ -126,6 +130,7 @@ public class EnemyStateMachine : MonoBehaviour
     {
         targetPosition = transform.position;
         agent.SetDestination(targetPosition);
+        agent.speed = 0f;
     }
 
     private void AttackToTarget()
@@ -134,6 +139,7 @@ public class EnemyStateMachine : MonoBehaviour
 
         if (attackTimer >= enemyStatsComponent.GetAttackSpeed())
         {
+            Audio_Manager._AUDIO_MANAGER.PlayFXSound(attackClip);
             towerTarget.GetComponent<DetectEnemyDamage>().TakeDamage(enemyStatsComponent.GetAttackForce());
             attackTimer = 0f;
         }

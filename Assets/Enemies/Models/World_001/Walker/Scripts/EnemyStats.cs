@@ -10,6 +10,8 @@ public class EnemyStats : MonoBehaviour
     [SerializeField] private float attackRange;
     [SerializeField] private float attackSpeed;
     [SerializeField] private float attackForce;
+    [SerializeField] private float walkingSpeed;
+    [SerializeField] private float runningSpeed;
 
     public int GetID() => id;
     public float GetLifeAmount() => lifeAmount;
@@ -19,4 +21,6 @@ public class EnemyStats : MonoBehaviour
     public float GetAttackRange() => attackRange;
     public float GetAttackSpeed() => attackSpeed;
     public float GetAttackForce() => attackForce;
+    public float GetWalkingSpeed() => walkingSpeed;
+    public float GetRunningSpeed() => runningSpeed;
 }

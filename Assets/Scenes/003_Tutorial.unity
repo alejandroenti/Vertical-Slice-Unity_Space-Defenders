@@ -2456,7 +2456,7 @@ PrefabInstance:
       objectReference: {fileID: 1471637744}
     - target: {fileID: 873271781327453250, guid: 5b394c62f23333c4e985ab8376dd15c7, type: 3}
       propertyPath: towersList.Array.size
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 873271781327453250, guid: 5b394c62f23333c4e985ab8376dd15c7, type: 3}
       propertyPath: towersList.Array.data[0]
@@ -2932,6 +2932,10 @@ PrefabInstance:
     - target: {fileID: 7719306181454845354, guid: 0a082c7e30f629441a6619e341e94c04, type: 3}
       propertyPath: lifeAmount
       value: 45
+      objectReference: {fileID: 0}
+    - target: {fileID: 7719306181454845354, guid: 0a082c7e30f629441a6619e341e94c04, type: 3}
+      propertyPath: attackForce
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8122052883948027684, guid: 0a082c7e30f629441a6619e341e94c04, type: 3}
       propertyPath: m_Enabled
