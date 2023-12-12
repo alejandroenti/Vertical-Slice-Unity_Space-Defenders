@@ -19,6 +19,9 @@ public class GamplayStateMachine : MonoBehaviour
     [Header("Enemy Numbers")]
     [SerializeField] private int[] enemies = { 4, 7 };
 
+    [Header("Shuffle State Audio")]
+    [SerializeField] private AudioClip shuffleClip;
+
     private int currentRound = 1;
     private States currentState = States.START_STAGE;
 
@@ -30,6 +33,7 @@ public class GamplayStateMachine : MonoBehaviour
     private float userActiontimer = 0f;
 
     private bool isStateWorking = false;
+
 
     private void Awake()
     {
@@ -104,12 +108,14 @@ public class GamplayStateMachine : MonoBehaviour
 
     private void StartStage()
     {
+
         UI_Manager._UI_MANAGER.UpdateCurrentState("STARTING STAGE");
 
         startingStagetimer += Time.deltaTime;
 
         if (startingStagetimer >= startingStageMaxTime)
         {
+            Tutorial_Manager._TUTORIAL_MANAGER.PlayNextText();
             currentState = States.SHUFFLE_DECK;
             startingStagetimer = 0f;
         }
@@ -124,6 +130,7 @@ public class GamplayStateMachine : MonoBehaviour
         // BARAJAR LAS CARTAS ACTUALES
         cards = Shuffle(original);
 
+        Audio_Manager._AUDIO_MANAGER.PlayFXSound(shuffleClip);
 
         yield return new WaitForSeconds(shuffleMaxTime);
 
@@ -137,12 +144,14 @@ public class GamplayStateMachine : MonoBehaviour
 
     private void UserAction()
     {
-        UI_Manager._UI_MANAGER.UpdateCurrentState("USER ACTION");
+
+        UI_Manager._UI_MANAGER.UpdateCurrentState("USER ACTION - " + (int)(userActionMaxTime - userActiontimer));
 
         userActiontimer += Time.deltaTime;
 
         if (userActiontimer >= userActionMaxTime)
         {
+            Tutorial_Manager._TUTORIAL_MANAGER.PlayNextText();
             currentState = States.BATTLE;
             userActiontimer = 0f;
             DeleteHandCards();
@@ -166,6 +175,7 @@ public class GamplayStateMachine : MonoBehaviour
         // Revisamos si no hay torres en el nivel o no hay enemigos en la ronda
         if (Level_Manager._LEVEL_MANAGER.GetTowers().Count <= 0 || (Level_Manager._LEVEL_MANAGER.GetEnemies().Count <= 0 && !Spawn_Manager._SPAWN_MANAGER.GetIsRoundStarted()))
         {
+            Tutorial_Manager._TUTORIAL_MANAGER.PlayNextText();
             currentState = States.USER_ALIVE;
             Spawn_Manager._SPAWN_MANAGER.SetIsRoundStarted(false);
             isStateWorking = false;

@@ -12,6 +12,7 @@ public class EnemyStats : MonoBehaviour
     [SerializeField] private float attackForce;
     [SerializeField] private float walkingSpeed;
     [SerializeField] private float runningSpeed;
+    [SerializeField] private int money;
 
     public int GetID() => id;
     public void SetID(int newID) => id = newID;
@@ -24,4 +25,5 @@ public class EnemyStats : MonoBehaviour
     public float GetAttackForce() => attackForce;
     public float GetWalkingSpeed() => walkingSpeed;
     public float GetRunningSpeed() => runningSpeed;
+    public int GetMoney() => money;
 }

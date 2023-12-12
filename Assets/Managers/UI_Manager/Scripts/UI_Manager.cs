@@ -1,4 +1,3 @@
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class UI_Manager : MonoBehaviour
@@ -143,5 +142,17 @@ public class UI_Manager : MonoBehaviour
     public void HideDeckContainer()
     {
         deckContainerObject.SetActive(false);
+    }
+
+    public void PlayTutorialText(GameObject textObject)
+    {
+        Game_Manager._Game_Manager.StopTime();
+        textObject.SetActive(true);
+    }
+
+    public void HideTutorialText(GameObject textObject)
+    {
+        textObject.SetActive(false);
+        Game_Manager._Game_Manager.ResumeTime();
     }
 }

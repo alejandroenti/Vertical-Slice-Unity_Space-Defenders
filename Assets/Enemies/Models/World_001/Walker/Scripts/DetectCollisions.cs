@@ -18,6 +18,7 @@ public class DetectCollisions : MonoBehaviour
             if (enemyStatsComponent.GetLifeAmount() <= 0)
             {
                 // Avisar level manager
+                Game_Manager._Game_Manager.AddCurrency(GetComponent<EnemyStats>().GetMoney());
                 Level_Manager._LEVEL_MANAGER.RemoveEnemy(this.gameObject);
                 Destroy(this.gameObject);
             }

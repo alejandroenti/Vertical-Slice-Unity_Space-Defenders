@@ -211,6 +211,7 @@ MonoBehaviour:
   attackForce: 15
   walkingSpeed: 0.75
   runningSpeed: 1.25
+  money: 65
 --- !u!114 &-6212795993798161089
 MonoBehaviour:
   m_ObjectHideFlags: 0

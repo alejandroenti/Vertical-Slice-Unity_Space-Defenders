@@ -40,7 +40,9 @@ public class Level_Manager : MonoBehaviour
         if (Scene_Manager._SCENE_MANAGER.GetCurrentSceneName() == "003_Tutorial")
         {
             Game_Manager._Game_Manager.AddCurrency(200);
+            Tutorial_Manager._TUTORIAL_MANAGER.PlayNextText();
         }
+
     }
 
     public void AddTowerToLevel(GameObject tower)
